@@ -35,7 +35,7 @@ int m4 = 180;
 int m5 = 90;
 int m6 = 0;
 
-boolean moveBraccio = false;
+bool moveBraccio = false;
 
 Servo base;
 Servo shoulder;
