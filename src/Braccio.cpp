@@ -78,8 +78,8 @@ unsigned int _Braccio::begin(int soft_start_level) {
 	step_wrist_rot = 0;
 	step_gripper = 73;
 
-	if(soft_start_level!=SOFT_START_DISABLED)
-    		_softStart(soft_start_level);
+	if(soft_start_level!=SOFT_START_DISABLED) {
+    		_softStart(soft_start_level);}
 	return 1;
 }
 
@@ -103,11 +103,11 @@ void _Braccio::_softwarePWM(int high_time, int low_time){
 */
 void _Braccio::_softStart(int soft_start_level){      
 	long int tmp=millis();
-	while(millis()-tmp < LOW_LIMIT_TIMEOUT)
-		_softwarePWM(80+soft_start_level, 450 - soft_start_level);   //the sum should be 530usec	
+	while(millis()-tmp < LOW_LIMIT_TIMEOUT){
+		_softwarePWM(80+soft_start_level, 450 - soft_start_level);}   //the sum should be 530usec	
 
-	while(millis()-tmp < HIGH_LIMIT_TIMEOUT)
-		_softwarePWM(75 + soft_start_level, 430 - soft_start_level); //the sum should be 505usec
+	while(millis()-tmp < HIGH_LIMIT_TIMEOUT){
+		_softwarePWM(75 + soft_start_level, 430 - soft_start_level);} //the sum should be 505usec
 
 	digitalWrite(SOFT_START_CONTROL_PIN,HIGH);
 }
@@ -126,20 +126,55 @@ void _Braccio::_softStart(int soft_start_level){
 int _Braccio::ServoMovement(int stepDelay, int vBase, int vShoulder, int vElbow,int vWrist_ver, int vWrist_rot, int vgripper) {
 
 	// Check values, to avoid dangerous positions for the Braccio
-    	if (stepDelay > 30) stepDelay = 30;
-	if (stepDelay < 10) stepDelay = 10;
-	if (vBase < 0) vBase=0;
-	if (vBase > 180) vBase=180;
-	if (vShoulder < 15) vShoulder=15;
-	if (vShoulder > 165) vShoulder=165;
-	if (vElbow < 0) vElbow=0;
-	if (vElbow > 180) vElbow=180;
-	if (vWrist_ver < 0) vWrist_ver=0;
-	if (vWrist_ver > 180) vWrist_ver=180;
-	if (vWrist_rot > 180) vWrist_rot=180;
-	if (vWrist_rot < 0) vWrist_rot=0;
-    	if (vgripper < 10) vgripper = 10;
-	if (vgripper > 73) vgripper = 73;
+    	if (stepDelay > 30) 
+        { 
+         stepDelay = 30;
+        }
+       //------------------
+	if (stepDelay < 10) 
+        { 
+         stepDelay = 10;
+        }
+       //------------------
+	if (vBase < 0)
+        { 
+         vBase=0;
+        }
+       //------------------
+	if (vBase > 180)
+        { 
+         vBase=180;
+        }
+
+	if (vShoulder < 15) 
+         vShoulder=15;
+
+	if (vShoulder > 165) 
+         vShoulder=165;
+
+	if (vElbow < 0) 
+         vElbow=0;
+
+	if (vElbow > 180) 
+         vElbow=180;
+
+	if (vWrist_ver < 0) 
+         vWrist_ver=0;
+
+	if (vWrist_ver > 180) 
+        { vWrist_ver=180;}
+
+	if (vWrist_rot > 180) 
+        { Wrist_rot=180;}
+
+	if (vWrist_rot < 0) 
+        { vWrist_rot=0;}
+
+    	if (vgripper < 10) 
+        { vgripper = 10;}
+
+	if (vgripper > 73) 
+        { vgripper = 73;}
 
 	int exit = 1;
 
