@@ -209,13 +209,13 @@ void process(WifiData client) {
 The braccio Say 'Ciao' with the GRIPPER
 */
 void sayCiao() {
-  Braccio.ServoMovement(20,           90,  0, 180, 160,  0,  15);
+  Braccio.ServoMovement(20, 90, 0, 180, 160, 0, 15);
 
   for (int i = 0; i < 5; i++) {
-    Braccio.ServoMovement(10,           90,  0, 180, 160,  0,  15);
+    Braccio.ServoMovement(10, 90, 0, 180, 160, 0, 15);
     delay(500);
 
-    Braccio.ServoMovement(10,     90,  0,   180,   160,  0,   73);
+    Braccio.ServoMovement(10, 90, 0, 180, 160, 0, 73);
     delay(500);
   }
 }
@@ -226,16 +226,16 @@ Braccio take the Sponge
 void takesponge() {
   //starting position
   //(step delay  M1 , M2 , M3 , M4 , M5 , M6);
-  Braccio.ServoMovement(20,           0,  45, 180, 180,  90,  0);
+  Braccio.ServoMovement(20, 0, 45, 180, 180, 90, 0);
 
   //I move arm towards the sponge
-  Braccio.ServoMovement(20,           0,  90, 180, 180,  90,   0);
+  Braccio.ServoMovement(20, 0, 90, 180, 180,  90, 0);
 
   //the GRIPPER takes the sponge
-  Braccio.ServoMovement(20,           0,  90, 180, 180,  90,  60 );
+  Braccio.ServoMovement(20, 0, 90, 180, 180, 90, 60);
 
   //up the sponge
-  Braccio.ServoMovement(20,         0,   45, 180,  45,  0, 60);
+  Braccio.ServoMovement(20, 0, 45, 180, 45, 0, 60);
 }
 
 
@@ -246,9 +246,9 @@ void showsponge() {
   for (int i = 0; i < 2; i++) {
 
     //(step delay  M1 , M2 , M3 , M4 , M5 , M6 );
-    Braccio.ServoMovement(10,         0,   45, 180,  45,  180, 60);
+    Braccio.ServoMovement(10, 0, 45, 180,  45,  180, 60);
 
-    Braccio.ServoMovement(10,         0,   45, 180,  45,  0, 60);
+    Braccio.ServoMovement(10, 0, 45, 180, 45, 0, 60);
   }
 }
 
@@ -257,9 +257,9 @@ Braccio throw away the sponge
 */
 void throwsponge() {
   //(step delay  M1 , M2 , M3 , M4 , M5 , M6 );
-  Braccio.ServoMovement(20,         0,   45, 90,  45,  90, 60);
+  Braccio.ServoMovement(20, 0, 45, 90, 45, 90, 60);
 
-  Braccio.ServoMovement(5,         0,   45, 135,  90,  90, 60);
+  Braccio.ServoMovement(5, 0, 45, 135, 90, 90, 60);
 
-  Braccio.ServoMovement(5,         0,   90, 150,  90,  90, 0);
+  Braccio.ServoMovement(5, 0, 90, 150, 90, 90, 0);
 }
