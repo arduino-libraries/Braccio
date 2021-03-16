@@ -59,8 +59,8 @@ unsigned int _Braccio::begin(int soft_start_level) {
 	base.attach(11);
 	shoulder.attach(10);
 	elbow.attach(9);
-	wrist_rot.attach(6);
-	wrist_ver.attach(5);
+    wrist_ver.attach(6);
+    wrist_rot.attach(5);
 	gripper.attach(3);
         
 	//For each step motor this set up the initial degree
