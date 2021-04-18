@@ -59,9 +59,9 @@ Servo gripper;
 
 
 void setup() {
-  //Intitialization of Braccio
+  //Initialization of Braccio
   Braccio.begin();
-  //Intitialization of the Uno WiFi
+  //Initialization of the Uno WiFi
   Wifi.begin();
   Wifi.println("REST Server is up");
 }
@@ -126,9 +126,9 @@ void process(WifiData client) {
   //PWM pin where is connected
   //eg: http://192.168.240.1/arduino/custom/servo:3/value:45 or http://192.168.240.1/arduino/custom/base/value:45
   else if (message.startsWith("SERVO")) {
-    //Parse the message to retrive what is the servo to move
+    //Parse the message to retrieve which servo to move
     int servo = parseCommand(message, "SERVO");
-    //Parse the message to retrive what is the value for the servo
+    //Parse the message to retrieve the value for the servo
     int value = parseCommand(message, "VALUE");
 
     client.println("Message:" + String(message) + "SERVO: " + String(servo) + " " + String(value));

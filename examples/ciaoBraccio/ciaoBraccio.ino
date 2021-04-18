@@ -101,9 +101,9 @@ void loop() {
     //This command allow you to move a desired servo motor giving the
     //PWM pin where is connected
     else if (message.startsWith("SERVO")) {
-      //Parse the message to retrive what is the servo to move
+      //Parse the message to retrieve which servo to move
       int servo = parseCommand(message, "SERVO");
-      //Parse the message to retrive what is the value for the servo
+      //Parse the message to retrieve the value for the servo
       int value = parseCommand(message, "VALUE");
 
       Ciao.writeResponse("restserver", id, "Message:" + String(message) + "SERVO: " + String(servo) + " " + String(value));

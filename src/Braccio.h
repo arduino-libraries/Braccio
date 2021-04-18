@@ -44,7 +44,7 @@ public:
   	
   /**
   * Braccio initializations and set initial position
-  * By modifing this function you can set up the initial position of all the
+  * By modifying this function you can set up the initial position of all the
   * servo motors of Braccio 
   *@param soft_start_level: the minimum value is -70, default value is 0 (SOFT_START_DEFAULT)
   * You should set begin(SOFT_START_DISABLED) if you are using the Arm Robot shield V1.6
