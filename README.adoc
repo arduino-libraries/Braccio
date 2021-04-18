@@ -7,11 +7,8 @@ image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/
 
 The library offers easy access to the data from the onboard TinkerKit Braccio, and provides moves for the Braccio.
 
-- Upgrades:
-Soft-Start: Used with the Braccio Shield V4 create perform a soft start for the TinkerKit Braccio. It protects the servo motors and the junctions from damages
-
 For more information about this library please visit us at
-http://www.arduino.org/products/tinkerkit/17-arduino-tinkerkit/arduino-tinkerkit-braccio
+https://www.arduino.cc/en/Guide/Braccio
 
 == License ==
 
