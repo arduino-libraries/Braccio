@@ -1,7 +1,7 @@
 /*
   takethesponge.ino
 
- This example commands to the Braccio to take a sponge from the table and it shows to the user
+ This example commands the Braccio to take a sponge from the table and show it to the user
 
  Created on 18 Nov 2015
  by Andrea Martino
@@ -41,7 +41,7 @@ void loop() {
   M3=elbow degrees. Allowed values from 0 to 180 degrees
   M4=wrist vertical degrees. Allowed values from 0 to 180 degrees
   M5=wrist rotation degrees. Allowed values from 0 to 180 degrees
-  M6=gripper degrees. Allowed values from 10 to 73 degrees. 10: the toungue is open, 73: the gripper is closed.
+  M6=gripper degrees. Allowed values from 10 to 73 degrees. 10: the tongue is open, 73: the gripper is closed.
   */
 
   //Starting position
@@ -51,7 +51,7 @@ void loop() {
   //Wait 1 second
   delay(1000);
 
-  //The braccio moves to the sponge. Only the M2 servo will moves
+  //The Braccio moves to the sponge. Only the M2 servo will moves
   Braccio.ServoMovement(20,           0,  90, 180, 180,  90,   10);
 
   //Close the gripper to take the sponge. Only the M6 servo will moves

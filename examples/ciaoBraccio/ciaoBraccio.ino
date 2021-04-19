@@ -1,10 +1,10 @@
 /*
 
- This sketch uses the rest connector to receive command for the MCU from a rest client.
+ This sketch uses the REST connector to receive command for the MCU from a REST client.
  Each command received will fire an action for the Braccio.
  Run the sketch with Arduino Braccio - Web Examples to move your Braccio via web page.
  Visit the Demo section of the Braccio's page.
- http://www.arduino.org/products/tinkerkit/17-arduino-tinkerkit/arduino-tinkerkit-braccio
+ https://www.arduino.cc/en/Guide/Braccio
  
 
 
@@ -15,8 +15,8 @@ REST command example:
 
  example: http://arduino.local/arduino/ledon
 
- NOTE: be sure to activate and configure rest connector on Linino OS
-       http://labs.arduino.org/Ciao
+ NOTE: be sure to activate and configure REST connector on Linino OS
+       https://www.arduino.cc/en/Reference/Ciao
 
  created March 2016
  by andrea[at]arduino[dot]org and a.ferrante[at]arduino[dot]org
@@ -54,7 +54,7 @@ void setup() {
 
 /**
 Parse Command from REST
-It parse a command like: /arduino/base/value:45
+It parses a command like: /arduino/base/value:45
 Giving "base" it return the value
 @param command: The message to parse
 @param type: the key for parsing
@@ -74,7 +74,7 @@ void loop() {
 
   //Select REST connector
   CiaoData data = Ciao.read("restserver");
-  //If data is not empry
+  //If data is not empty
   if (!data.isEmpty()) {
     //ID of the command
     String id = data.get(0);
@@ -101,44 +101,44 @@ void loop() {
     //This command allow you to move a desired servo motor giving the
     //PWM pin where is connected
     else if (message.startsWith("SERVO")) {
-      //Parse the message to retrive what is the servo to move
+      //Parse the message to retrieve which servo to move
       int servo = parseCommand(message, "SERVO");
-      //Parse the message to retrive what is the value for the servo
+      //Parse the message to retrieve the value for the servo
       int value = parseCommand(message, "VALUE");
 
       Ciao.writeResponse("restserver", id, "Message:" + String(message) + "SERVO: " + String(servo) + " " + String(value));
     }
-    //Command for the base of the braccio (M1)
+    //Command for the base of the Braccio (M1)
     else if (message.startsWith("BASE")) {
       m1 = parseCommand(message, "VALUE");
       moveBraccio = true;
       Ciao.writeResponse("restserver", id, "BASE: " + String(m1));
     }
-    //Command for the shoulder of the braccio (M2)
+    //Command for the shoulder of the Braccio (M2)
     else if (message.startsWith("SHOULDER")) {
       m2 = parseCommand(message, "VALUE");
       moveBraccio = true;
       Ciao.writeResponse("restserver", id, "SHOULDER: " + String(m2));
     }
-    //Command for the elbow of the braccio (M3)
+    //Command for the elbow of the Braccio (M3)
     else if (message.startsWith("ELBOW")) {
       m3 = parseCommand(message, "VALUE");
       moveBraccio = true;
       Ciao.writeResponse("restserver", id, "ELBOW: " + String(m3));
     }
-    //Command for the wrist of the braccio to move it up and down (M4)
+    //Command for the wrist of the Braccio to move up and down (M4)
     else if (message.startsWith("WRISTV")) {
       m4 = parseCommand(message, "VALUE");
       moveBraccio = true;
       Ciao.writeResponse("restserver", id, "WRISTV: " + String(m4));
     }
-    //Command for the wrist of the braccio to rotate it  (M5)
+    //Command for the wrist of the Braccio to rotate (M5)
     else if (message.startsWith("WRISTR")) {
       m5 = parseCommand(message, "VALUE");
       moveBraccio = true;
       Ciao.writeResponse("restserver", id, "WRISTR: " + String(m5));
     }
-    //Command for the gripper of the braccio to open and close it (M6)
+    //Command for the gripper of the Braccio to open and close (M6)
     else if (message.startsWith("GRIPPER")) {
       m6 = parseCommand(message, "VALUE");
       moveBraccio = true;
@@ -149,17 +149,17 @@ void loop() {
       sayCiao();
       Ciao.writeResponse("restserver", id, "SAYCIAO: " + String(m6));
     }
-    //Command for take the sponge
+    //Command to take the sponge
     else if (message.startsWith("TAKESPONGE")) {
       takesponge();
       Ciao.writeResponse("restserver", id, "TAKESPONGE: " + String(m6));
     }
-   //Command for show the sponge
+   //Command to show the sponge
     else if (message.startsWith("SHOWSPONGE")) {
       showsponge();
       Ciao.writeResponse("restserver", id, "SHOWSPONGE: " + String(m6));
     }
-    //Command for throw away the sponge
+    //Command to throw away the sponge
     else if (message.startsWith("THROWSPONGE")) {
       throwsponge();
       Ciao.writeResponse("restserver", id, "THROWSPONGE: " + String(m6));
@@ -177,7 +177,7 @@ void loop() {
 }
 
 /**
-The braccio Say 'Ciao' with the Tongue
+The Braccio says 'Ciao' with the Tongue
 */
 void sayCiao() {
 
@@ -193,7 +193,7 @@ void sayCiao() {
 }
 
 /**
-Braccio take the Sponge
+Braccio takes the Sponge
 */
 void takesponge() {
   //starting position
@@ -206,13 +206,13 @@ void takesponge() {
   //the gripper takes the sponge
   Braccio.ServoMovement(20,           0,  90, 180, 180,  90,  60 );
 
-  //up the sponge
+  //raise the sponge
   Braccio.ServoMovement(20,         0,   45, 180,  45,  0, 60);
 }
 
 
 /**
-Braccio show the sponge to the user
+Braccio shows the sponge to the user
 */
 void showsponge() {
   for (int i = 0; i < 2; i++) {
@@ -225,7 +225,7 @@ void showsponge() {
 }
 
 /**
-Braccio throw away the sponge
+Braccio throws away the sponge
 */
 void throwsponge() {
                       //(step delay  M1 , M2 , M3 , M4 , M5 , M6 );

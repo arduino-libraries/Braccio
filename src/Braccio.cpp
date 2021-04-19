@@ -41,8 +41,8 @@ _Braccio::_Braccio() {
 }
 
 /**
- * Braccio initialization and set intial position
- * Modifing this function you can set up the initial position of all the
+ * Braccio initialization and set initial position
+ * By modifying this function you can set up the initial position of all the
  * servo motors of Braccio
  * @param soft_start_level: default value is 0 (SOFT_START_DEFAULT)
  * You should set begin(SOFT_START_DISABLED) if you are using the Arm Robot shield V1.6
@@ -55,7 +55,7 @@ unsigned int _Braccio::begin(int soft_start_level) {
 		digitalWrite(SOFT_START_CONTROL_PIN,LOW);
 	}
 
-	// initialization pin Servo motors
+	// initialization of servo motor pins
 	base.attach(11);
 	shoulder.attach(10);
 	elbow.attach(9);
@@ -63,7 +63,7 @@ unsigned int _Braccio::begin(int soft_start_level) {
 	wrist_ver.attach(5);
 	gripper.attach(3);
         
-	//For each step motor this set up the initial degree
+	// Set up the initial degree for each step motor
 	base.write(0);
 	shoulder.write(40);
 	elbow.write(180);
@@ -97,23 +97,23 @@ void _Braccio::_softwarePWM(int high_time, int low_time){
 
 /*
 * This function, used only with the Braccio Shield V4 and greater,
-* turn ON the Braccio softly and save it from brokes.
+* turns ON the Braccio softly to save it from breaking.
 * The SOFT_START_CONTROL_PIN is used as a software PWM
 * @param soft_start_level: the minimum value is -70, default value is 0 (SOFT_START_DEFAULT)
 */
 void _Braccio::_softStart(int soft_start_level){      
 	long int tmp=millis();
 	while(millis()-tmp < LOW_LIMIT_TIMEOUT)
-		_softwarePWM(80+soft_start_level, 450 - soft_start_level);   //the sum should be 530usec	
+		_softwarePWM(80+soft_start_level, 450 - soft_start_level);   //the sum should be 530 usec	
 
 	while(millis()-tmp < HIGH_LIMIT_TIMEOUT)
-		_softwarePWM(75 + soft_start_level, 430 - soft_start_level); //the sum should be 505usec
+		_softwarePWM(75 + soft_start_level, 430 - soft_start_level); //the sum should be 505 usec
 
 	digitalWrite(SOFT_START_CONTROL_PIN,HIGH);
 }
 
 /**
- * This functions allow you to control all the servo motors
+ * This functions allows you to control all the servo motors
  * 
  * @param stepDelay The delay between each servo movement
  * @param vBase next base servo motor degree
@@ -146,7 +146,7 @@ int _Braccio::ServoMovement(int stepDelay, int vBase, int vShoulder, int vElbow,
 	//Until the all motors are in the desired position
 	while (exit) 
 	{			
-		//For each servo motor if next degree is not the same of the previuos than do the movement		
+		//For each servo motor if next degree is not the same as the previous then do the movement
 		if (vBase != step_base) 
 		{			
 			base.write(step_base);

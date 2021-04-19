@@ -43,8 +43,8 @@ public:
   _Braccio();
   	
   /**
-  * Braccio initializations and set intial position
-  * Modifing this function you can set up the initial position of all the
+  * Braccio initializations and set initial position
+  * By modifying this function you can set up the initial position of all the
   * servo motors of Braccio 
   *@param soft_start_level: the minimum value is -70, default value is 0 (SOFT_START_DEFAULT)
   * You should set begin(SOFT_START_DISABLED) if you are using the Arm Robot shield V1.6
@@ -60,9 +60,9 @@ public:
 private:
   /*
   * This function, used only with the Braccio Shield V4 and greater,
-  * turn ON the Braccio softly and save Braccio from brokes.
+  * turn ON the Braccio softly to save Braccio from breaking.
   * The SOFT_START_CONTROL_PIN is used as a software PWM
-  * @param soft_start_level: the minimum value is -70, , default value is 0 (SOFT_START_DEFAULT)
+  * @param soft_start_level: the minimum value is -70, default value is 0 (SOFT_START_DEFAULT)
   */
   void _softStart(int soft_start_level);
 	

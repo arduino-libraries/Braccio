@@ -6,13 +6,13 @@
 
  This example for the Arduino Uno WiFi shows how to 
  control a TinkerKit Braccio through REST calls. 
- You can create your how mobile app or your 
+ You can create your mobile app or your 
  browser app to control the Braccio in wireless mode
  
  Note that with the Braccio shield version less than V4
  you need to disconnect the pin A4 from the shield to the board
 
- Possible commands created in this shetch:
+ Possible commands created in this sketch:
 
  * "/arduino/custom/base/value:80"	-> Moves the base of the Braccio at 80 degrees
  * "/arduino/custom/shoulder/value:150"	-> Moves the shoulder of the Braccio at 150 degrees
@@ -23,15 +23,15 @@
  * "/arduino/custom/ledon"		-> Turn ON the LED 13
  * "/arduino/custom/ledoff"		-> Turn OFF the LED 13
  * "/arduino/custom/servo:3/value:73"	-> Moves the servo to the pin 3 at 73 degrees
- * "/arduino/custom/sayciao"		-> Run the function sayciao(). The Braccio say "Ciao" with the gripper
- * "/arduino/custom/takesponge"		-> Run the function takesponge(). The Braccio take the big sponge you can find in the its box
- * "/arduino/custom/showsponge"		-> Run the function showsponge(). The Braccio show the sponge to the user
- * "/arduino/custom/throwsponge"	-> Run the function throwsponge(). The Braccio throw away the sponge
+ * "/arduino/custom/sayciao"		-> Run the function sayciao(). The Braccio says "Ciao" with the gripper
+ * "/arduino/custom/takesponge"		-> Run the function takesponge(). The Braccio takes the big sponge you can find in its box
+ * "/arduino/custom/showsponge"		-> Run the function showsponge(). The Braccio shows the sponge to the user
+ * "/arduino/custom/throwsponge"	-> Run the function throwsponge(). The Braccio throws away the sponge
 
  This example code is part of the public domain
 
- http://labs.arduino.org/RestServer+and+RestClient
- http://www.arduino.org/products/tinkerkit/arduino-tinkerkit-braccio
+ https://web.archive.org/web/20160502122840/http://labs.arduino.org/RestServer+and+RestClient
+ https://store.arduino.cc/tinkerkit-braccio-robot
 
 */
 
@@ -59,9 +59,9 @@ Servo gripper;
 
 
 void setup() {
-  //Intitialization of Braccio
+  //Initialization of Braccio
   Braccio.begin();
-  //Intitialization of the Uno WiFi
+  //Initialization of the Uno WiFi
   Wifi.begin();
   Wifi.println("REST Server is up");
 }
@@ -126,9 +126,9 @@ void process(WifiData client) {
   //PWM pin where is connected
   //eg: http://192.168.240.1/arduino/custom/servo:3/value:45 or http://192.168.240.1/arduino/custom/base/value:45
   else if (message.startsWith("SERVO")) {
-    //Parse the message to retrive what is the servo to move
+    //Parse the message to retrieve which servo to move
     int servo = parseCommand(message, "SERVO");
-    //Parse the message to retrive what is the value for the servo
+    //Parse the message to retrieve the value for the servo
     int value = parseCommand(message, "VALUE");
 
     client.println("Message:" + String(message) + "SERVO: " + String(servo) + " " + String(value));
@@ -136,37 +136,37 @@ void process(WifiData client) {
     moveBraccio=true;
   }
   //http://192.168.240.1/arduino/custom/base:45 or http://192.168.240.1/arduino/custom/base/value:45
-  //Command for the base of the braccio (M1)
+  //Command for the base of the Braccio (M1)
   else if (message.startsWith("BASE")) {
     m1 = parseCommand(message, "VALUE");
     moveBraccio = true;
     client.println("BASE: " + String(m1));
   }
-  //Command for the shoulder of the braccio (M2)
+  //Command for the shoulder of the Braccio (M2)
   else if (message.startsWith("SHOULDER")) {
     m2 = parseCommand(message, "VALUE");
     moveBraccio = true;
     client.println("SHOULDER: " + String(m2));
   }
-  //Command for the elbow of the braccio (M3)
+  //Command for the elbow of the Braccio (M3)
   else if (message.startsWith("ELBOW")) {
     m3 = parseCommand(message, "VALUE");
     moveBraccio = true;
     client.println("ELBOW: " + String(m3));
   }
-  //Command for the wrist of the braccio to move it up and down (M4)
+  //Command for the wrist of the Braccio to move it up and down (M4)
   else if (message.startsWith("WRISTV")) {
     m4 = parseCommand(message, "VALUE");
     moveBraccio = true;
     client.println("WRISTV: " + String(m4));
   }
-  //Command for the wrist of the braccio to rotate it  (M5)
+  //Command for the wrist of the Braccio to rotate it  (M5)
   else if (message.startsWith("WRISTR")) {
     m5 = parseCommand(message, "VALUE");
     moveBraccio = true;
     client.println("WRISTR: " + String(m5));
   }
-  //Command for the GRIPPER of the braccio to open and close it (M6)
+  //Command for the GRIPPER of the Braccio to open and close it (M6)
   else if (message.startsWith("GRIPPER")) {
     m6 = parseCommand(message, "VALUE");
     moveBraccio = true;
@@ -206,7 +206,7 @@ void process(WifiData client) {
 }
 
 /**
-The braccio Say 'Ciao' with the GRIPPER
+The Braccio Say 'Ciao' with the GRIPPER
 */
 void sayCiao() {
   Braccio.ServoMovement(20,           90,  0, 180, 160,  0,  15);

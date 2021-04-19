@@ -2,7 +2,7 @@
 /*
   simpleMovements.ino
 
- This  sketch simpleMovements shows how they move each servo motor of Braccio
+ The simpleMovements sketch shows how to move each servo motor of the Braccio
 
  Created on 18 Nov 2015
  by Andrea Martino
@@ -40,7 +40,7 @@ void loop() {
    M3=elbow degrees. Allowed values from 0 to 180 degrees
    M4=wrist vertical degrees. Allowed values from 0 to 180 degrees
    M5=wrist rotation degrees. Allowed values from 0 to 180 degrees
-   M6=gripper degrees. Allowed values from 10 to 73 degrees. 10: the toungue is open, 73: the gripper is closed.
+   M6=gripper degrees. Allowed values from 10 to 73 degrees. 10: the tongue is open, 73: the gripper is closed.
   */
   
                        //(step delay, M1, M2, M3, M4, M5, M6);
