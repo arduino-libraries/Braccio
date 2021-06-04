@@ -259,7 +259,7 @@ void _Braccio::ServoMovement(int stepDelay, int vBase, int vShoulder, int vElbow
 /**
  * Puts the arm straight
  */
-void _Braccio::positionDroite()
+void _Braccio::stand()
 {
 	delay(100);
 	ServoMovement(20,         90, 95, 95, 90, 90,  90);
@@ -278,35 +278,35 @@ void _Braccio::amplitudeTest()
 	}
 
 	//rotation de l'epaule
-	positionDroite();
+	stand();
 	for (byte i = 15; i < 165; i++)
 	{
 		ServoMovement(30,         90, i, 95, 90, 90,  90);
 	}
 
 	//rotation du coude
-	positionDroite();
+	stand();
 	for (byte i = 0; i < 180; i++)
 	{
 		ServoMovement(30,         90, 95, i, 90, 90,  90);
 	}
 
 	//rotation verticale de la pince 
-	positionDroite();
+	stand();
 	for (byte i = 0; i < 180; i++)
 	{
 		ServoMovement(30,         90, 95, 95, i, 90,  90);
 	}
 
 	//rotation horizontale de la pince 
-	positionDroite();
+	stand();
 	for (byte i = 0; i < 180; i++)
 	{
 		ServoMovement(30,         90, 95, 95, 90, i,  90);
 	}
 
 	//ouverture de la pince 
-	positionDroite();
+	stand();
 	for (byte i = 10; i < 90; i++)
 	{
 		ServoMovement(30,         90, 95, 95, 90, 90,  i);
