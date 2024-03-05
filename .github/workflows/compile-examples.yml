@@ -37,30 +37,37 @@ jobs:
             platforms: |
               - name: arduino:avr
             ciao: false
+            artifact-name-suffix: arduino-avr-uno
           - fqbn: arduino:avr:unowifi
             platforms: |
               - name: arduino:avr
             ciao: false
+            artifact-name-suffix: arduino-avr-unowifi
           - fqbn: arduino:avr:mega
             platforms: |
               - name: arduino:avr
             ciao: false
+            artifact-name-suffix: arduino-avr-mega
           - fqbn: arduino:avr:leonardo
             platforms: |
               - name: arduino:avr
             ciao: true
+            artifact-name-suffix: arduino-avr-leonardo
           - fqbn: arduino:avr:yun
             platforms: |
               - name: arduino:avr
             ciao: true
+            artifact-name-suffix: arduino-avr-yun
           - fqbn: arduino:sam:arduino_due_x_dbg
             platforms: |
               - name: arduino:sam
             ciao: false
+            artifact-name-suffix: arduino-sam-arduino_due_x_dbg
           - fqbn: arduino:samd:arduino_zero_edbg
             platforms: |
               - name: arduino:samd
             ciao: true
+            artifact-name-suffix: arduino-samd-arduino_zero_edbg
 
         # Make board type-specific customizations to the matrix jobs
         include:
@@ -116,4 +123,4 @@ jobs:
         with:
           if-no-files-found: error
           path: ${{ env.SKETCHES_REPORTS_PATH }}
-          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
